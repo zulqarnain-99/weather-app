@@ -5,13 +5,27 @@ const app = express()
 const publicDirectoryPath = path.join(__dirname, "../public")
 app.use(express.static(publicDirectoryPath))
 
-app.get("/help", (req, response) => {
-  response.send("Help Page")
+app.get("", (req, response) => {
+  response.render("index", {
+    title: "weather",
+    name: "andrew Mead",
+  })
 })
 
 app.get("/about", (req, response) => {
-  response.send("<h1>About Page</h1>")
+  response.render("about", {
+    title: "weather",
+    name: "andrew Mead",
+  })
 })
+
+app.get("/help", (req, response) => {
+  response.render("help", {
+    helptext: "Text for help",
+  })
+})
+
+app.set("view engine", "hbs")
 
 app.get("/weather", (req, response) => {
   response.send({
