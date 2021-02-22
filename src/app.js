@@ -11,11 +11,14 @@ app.get("/help", (req, response) => {
 })
 
 app.get("/about", (req, response) => {
-  response.send("About Page")
+  response.send("<h1>About Page</h1>")
 })
 
 app.get("/weather", (req, response) => {
-  response.send("Weather Page")
+  response.send({
+    forecast: "It is snowing",
+    location: "Philendelphia",
+  })
 })
 
 app.listen(3000, () => {
