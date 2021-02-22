@@ -1,9 +1,15 @@
 const express = require("express")
 const path = require("path")
-
 const app = express()
+
 const publicDirectoryPath = path.join(__dirname, "../public")
+const viewPath = path.join(__dirname, "../templates")
+
 app.use(express.static(publicDirectoryPath))
+app.use(express.static(viewPath))
+
+app.set("view engine", "hbs")
+app.set("views", viewPath)
 
 app.get("", (req, response) => {
   response.render("index", {
@@ -24,8 +30,6 @@ app.get("/help", (req, response) => {
     helptext: "Text for help",
   })
 })
-
-app.set("view engine", "hbs")
 
 app.get("/weather", (req, response) => {
   response.send({
