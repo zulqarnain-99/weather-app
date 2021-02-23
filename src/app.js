@@ -47,10 +47,7 @@ app.get("/weather", (req, response) => {
   //     error: "you must provide an address!",
   //   })
   // }
-  // geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
-  //   if (error) {
-  //     return response.send({ error })
-  //   }
+  // geoco
   // forecast(latitude, (error, forecastData) => {
   //   if (error) {
   //     return response.send({ error })
