@@ -41,9 +41,15 @@ app.get("/help", (req, response) => {
 })
 
 app.get("/weather", (req, response) => {
+  if (!req.query.address) {
+    return response.send({
+      error: "you must provide an address!",
+    })
+  }
   response.send({
     forecast: "It is snowing",
     location: "Philendelphia",
+    address: req.query.address,
   })
 })
 
@@ -52,6 +58,18 @@ app.get("*", (req, response) => {
     title: "404",
     name: "zulqarnain",
     errorMessage: "404 Not Found",
+  })
+})
+
+app.get("/products", (req, res) => {
+  if (!req.query.search) {
+    return res.send({
+      error: "You must provide a search term",
+    })
+  }
+  console.log(req.query.search)
+  res.send({
+    product: [],
   })
 })
 
