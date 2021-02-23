@@ -42,32 +42,25 @@ app.get("/help", (req, response) => {
 })
 
 app.get("/weather", (req, response) => {
-  if (!req.query.address) {
-    return response.send({
-      error: "you must provide an address!",
-    })
-  }
-
-  geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
-    if (error) {
-      return response.send({ error })
-    }
-
-    forecast(latitude, (error, forecastData) => {
-      if (error) {
-        return response.send({ error })
-      }
-      response.send({
-        forecast: forecastData,
-        location,
-        address: res.query.address,
-      })
-    })
-  })
-  // response.send({
-  //   forecast: "It is snowing",
-  //   location: "Philendelphia",
-  //   address: req.query.address,
+  // if (!req.query.address) {
+  //   return response.send({
+  //     error: "you must provide an address!",
+  //   })
+  // }
+  // geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
+  //   if (error) {
+  //     return response.send({ error })
+  //   }
+  // forecast(latitude, (error, forecastData) => {
+  //   if (error) {
+  //     return response.send({ error })
+  //   }
+  //   response.send({
+  //     forecast: forecastData,
+  //     location,
+  //     address: res.query.address,
+  //   })
+  // })
   // })
 })
 
